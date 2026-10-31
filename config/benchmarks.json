@@ -1,0 +1,79 @@
+{
+  "_read_me": "Default assumptions used ONLY when real data (data/*.parquet from the pipeline) is missing. Every value carries a source or is marked as an assumption. Replace assumptions with sourced figures before submission.",
+
+  "kwh_per_customer_month": {
+    "low": 3.0,
+    "mode": 6.1,
+    "high": 35.0,
+    "source": "Mode: AMDA continental average consumption per customer, 6.1 kWh/month. High: Brief 03 range of 5-35 kWh/customer/month. Low: assumption.",
+    "status": "benchmark"
+  },
+
+  "uptake_share_of_buildings": {
+    "low": 0.45,
+    "high": 0.85,
+    "source": "Assumption. Replace with connections / building count measured at Selby sites.",
+    "status": "assumed"
+  },
+
+  "growth_fallback": {
+    "per_year_index": [1.0, 1.15, 1.30, 1.42, 1.52],
+    "spread": 0.15,
+    "source": "Assumption, used only when no matched villages or meter-based growth paths are available.",
+    "status": "assumed"
+  },
+
+  "design": {
+    "pv_oversize": 1.25,
+    "night_share": 0.70,
+    "depth_of_discharge": 0.80,
+    "round_trip_efficiency": 0.90,
+    "psh_fallback": 5.5,
+    "expansion_trigger_share": 0.85,
+    "source": "Team engineering rules (GridCast). PSH fallback is used only if NASA POWER cannot be reached.",
+    "status": "assumed"
+  },
+
+  "load_factor_rule": {
+    "base": 0.22,
+    "per_large_building_share": 1.2,
+    "market_bonus": 0.05,
+    "cap": 0.48,
+    "source": "Brief 03: household-only mini-grids run near 22% load factor; productive use can raise it to about 40%. Coefficients are a team assumption.",
+    "status": "assumed"
+  },
+
+  "costs_usd": {
+    "pv_per_kwp": 1250,
+    "battery_per_kwh": 400,
+    "distribution_per_connection": 300,
+    "opex_share_of_capex_per_year": 0.03,
+    "debt_share_of_capex": 0.60,
+    "interest_rate": 0.10,
+    "loan_years": 10,
+    "source": "Assumptions (PV cost from the team app). Replace with AMDA benchmarking figures or Selby minigridprojects.capex.",
+    "status": "assumed"
+  },
+
+  "tariff_usd_per_kwh": {
+    "default": 0.45,
+    "Kenya": 0.35,
+    "Nigeria": 0.55,
+    "source": "Assumption (team app defaults). Replace with Selby tariffs table converted to USD.",
+    "status": "assumed"
+  },
+
+  "fuel_spend_usd_month": {
+    "low": 5.0,
+    "high": 20.0,
+    "source": "Brief 03: users spend about $5-20/month on candles, kerosene, batteries and diesel.",
+    "status": "benchmark"
+  },
+
+  "grant_usd_per_connection": {
+    "default": 0.0,
+    "examples": {"Nigeria NEP Performance-Based Grant": 350},
+    "source": "Nigeria Electrification Project PBG: USD 350 per new connection (REA presentation, ESMAP 5th Mini Grids event).",
+    "status": "benchmark"
+  }
+}
